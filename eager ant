@@ -1,10 +1,33 @@
-# 성실한 개미
+# 성실한 개미 
 
-vin = []
-for i in range(10):
-    a= list(map(int, input().split()))    # 10x10 크기의 미로상자를 받음
-    vin.append(a)   
+m = []
+for i in range(12):
+    m.append([])
+    for j in range(12):
+        m[i].append(0)
         
 for i in range(10):
-    print(vin[i], end=' ')
-    print()
+    a = input().split()
+    for j in range(10):
+        m[i+1][j+1] = int(a[j])
+        
+x, y = 2, 2
+while True:
+    if m[x][y] == 0:    # 0 이면 그 값은 9
+        m[x][y] = 9
+    elif m[x][y] == 2:  # 2 이면 그 값은 9
+        m[x][y] = 9
+        break           # 이후 정지함
+    
+    if (m[x][y+1]==1 and m[x+1][y]==1) or (x==9 and y==9):  # (오른쪽이 1이고 아래가 1인경우) 또는 값이 9인경우 
+        break                                               # 정지
+    
+    if m[x][y+1] != 1:      # 오른쪽이 1이 아니라면 한 칸 더 오른쪽으로 이동
+        y += 1
+    elif m[x+1][y] != 1:    # 아래쪽이 1이 아니라면 한 칸 더 아래로 이동
+        x += 1
+        
+    for i in range(1,11):
+        for j in range(1,11):
+            print(m[i][j], end=' ')
+        print()
