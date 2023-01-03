@@ -1,0 +1,10 @@
+# 성실한 개미
+
+vin = []
+for i in range(10):
+    a= list(map(int, input().split()))    # 10x10 크기의 미로상자를 받음
+    vin.append(a)   
+        
+for i in range(10):
+    print(vin[i], end=' ')
+    print()
